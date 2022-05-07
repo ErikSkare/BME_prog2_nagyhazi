@@ -1,0 +1,7 @@
+*.layout
+*.depend
+bin/
+obj/
+*.csv
+*.docx
+memlog.txt
