@@ -4,29 +4,48 @@
 /**
  * \file heterostore.hpp
  *
- * HeteroStore oszt�ly deklar�ci�ja
+ * HeteroStore osztály deklarációja
  */
 
-#include <stdexcept>
+#include <iostream>
 
-template <typename T, class E = std::out_of_range>
+template <typename T>
 class HeteroStore {
-    T** a; ///> adatokra mutat� pointerek t�mbje.
-    size_t N; ///> a kollekci� aktu�lis m�rete.
+    T** a; ///> adatokra mutató pointerek tömbje.
+    size_t N; ///> a kollekció aktuális mérete.
 
 public:
     /// Konstruktor
-    /// Egy 0 m�ret� kollekci� inicializ�l�dik.
+    /// Egy 0 méretû kollekció inicializálódik.
     HeteroStore() : a(NULL), N(0) { }
 
-    /// megadja a kollekci� aktu�lis m�ret�t
+    /// megadja a kollekció aktuális méretét
     /// @return N
     inline size_t size() const { return N; }
 
-    // TODO: folytatni!
+    /// Hozzáad egy új elemet a tárolóhoz
+    /// @param ptr - az új elemre mutató pointer
+    /// a tároló felelőssége a felszabadítás!
+    void hozzaad(T* ptr);
 
-    /// virtu�lis destruktor
-    virtual ~HeteroStore() { }
+    /// Az első olyan elemet törli, amelyre a predikátum teljesül. (vagy semmit)
+    /// @param unpred - a predikátum
+    template <typename Pred>
+    void torol(Pred unpred);
+
+    /// Az első olyan elemet adja vissza, amelyre a predikátum teljesül.
+    /// @param unpred - a predikátum
+    /// @return a megtalált elemre mutató pointer, vagy NULL, ha nem talált semmit.
+    template <typename Pred>
+    T* keres(Pred unpred) const;
+
+    /// Az összes elemre meghívja a predikátumot.
+    /// @param unpred - a predikátum
+    template <typename Pred>
+    void bejar(Pred unpred) const;
+
+    /// virtuális destruktor
+    virtual ~HeteroStore();
 };
 
 #endif

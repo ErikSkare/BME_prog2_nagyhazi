@@ -1,17 +1,14 @@
 #include <iostream>
 
 #include "gyujtojegy.hpp"
+#include "vonat.hpp"
 
 using namespace std;
 
 int main()
 {
-    GyujtoJegy jegy(5, 4, 2);
-    try {
-        jegy.ervenyesit({true, true});
-        jegy.ervenyesit({true, true});
-    } catch(ErvenyesitesiHiba& hiba) {
-        hiba.what(cout);
-    }
+    GyujtoJegy jegy;
+    cin>>jegy;
+    cout<<jegy;
     return 0;
 }

@@ -9,12 +9,17 @@
 
 using uint = unsigned int;
 
+#include <istream>
+#include <ostream>
+
 class Datum {
     uint ev, honap, nap, ora, perc;
 
 public:
     /// Konstruktor
-    Datum(uint ev, uint honap, uint nap, uint ora, uint perc)
+    /// A default értékek érvénytelen datumnak számítanak, a beolvasáshoz kellenek,
+    /// hogy legyen default konstruktor.
+    Datum(uint ev = 0, uint honap = 0, uint nap = 0, uint ora = 0, uint perc = 0)
         : ev(ev), honap(honap), nap(nap), ora(ora), perc(perc) { }
 
     /// ev getter metódusa
@@ -60,5 +65,17 @@ public:
     /// virtuális destruktor
     virtual ~Datum() { }
 };
+
+/// Egy datum adatait beolvasó operátor.
+/// @param is - a stream, ahonnan a beolvasás lesz.
+/// @param datum - a datum, ahova a beírás lesz.
+/// @return a stream.
+std::istream& operator>>(std::istream& is, Datum& datum);
+
+/// Egy datum adatait kiíró operátor.
+/// @param os - a stream, ahova a kiírás lesz.
+/// @param datum - a datum, aminek az adatait kiírjuk.
+/// @return a stream.
+std::ostream& operator<<(std::ostream& os, const Datum& datum);
 
 #endif
