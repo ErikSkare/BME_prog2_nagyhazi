@@ -1,12 +1,12 @@
 #include <iostream>
 
-#include "diakjegy.hpp"
+#include "gyujtojegy.hpp"
 
 using namespace std;
 
 int main()
 {
-    DiakJegy jegy(5, 4, 20);
+    GyujtoJegy jegy(5, 4, 2);
     try {
         jegy.ervenyesit({true, true});
         jegy.ervenyesit({true, true});
