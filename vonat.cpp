@@ -10,16 +10,24 @@
 #include "gyujtojegy.hpp"
 
 void Vonat::jegyHozzaad(Jegy* jegy) {
+    if(jegy->getJarat() != this)
+        throw RosszVonatHiba();
     Jegy* talalat = jegyek.keres(jegyKeresByMasikJegy(jegy));
     if(talalat != NULL)
         throw FoglaltHiba(talalat->getKocsiSzam(), talalat->getHelySzam());
     jegyek.hozzaad(jegy);
 }
 
+void Vonat::jegyTorol(Jegy* jegy) {
+    jegyek.torol(jegyKeresByMasikJegy(jegy));
+}
+
 void Vonat::jegyekBeolvas(std::istream& is) {
     uint tipus;
     while(is >> tipus) {
         Jegy* jegy;
+        uint vonat_azon;
+        is >> vonat_azon;
         switch((Jegyek) tipus) {
             case TELJESJEGY: {
                 TeljesJegy* t_jegy = new TeljesJegy();
@@ -38,8 +46,17 @@ void Vonat::jegyekBeolvas(std::istream& is) {
             } break;
             default: break;
         }
-        jegyek.hozzaad(jegy);
+        if(vonat_azon != azonosito)
+            delete jegy;
+        else {
+            jegy->setJarat(this);
+            jegyek.hozzaad(jegy);
+        }
     }
+}
+
+void Vonat::jegyekKiir(std::ostream& os) const {
+    jegyek.bejar(jegyKiir(os));
 }
 
 Jegy* Vonat::jegyKeres(uint ksz, uint hsz) const {

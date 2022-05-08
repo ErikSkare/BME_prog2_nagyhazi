@@ -5,6 +5,7 @@
  */
 
 #include "jegy.hpp"
+#include "vonat.hpp"
 
 void ErvenyesitesiHiba::what(std::ostream& os) {
     os << "Sikertelen ervenyesites: \n";
@@ -35,6 +36,6 @@ std::istream& operator>>(std::istream& is, Jegy& jegy) {
 }
 
 std::ostream& operator<<(std::ostream& os, const Jegy& jegy) {
-    os << jegy.getKocsiSzam() << " " << jegy.getHelySzam();
+    os << jegy.getJarat()->getAzonosito() << " " << jegy.getKocsiSzam() << " " << jegy.getHelySzam();
     return os;
 }

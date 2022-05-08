@@ -14,8 +14,8 @@ class DiakJegy : public Jegy {
     uint kedvezmeny; ///< A jegyhez tartozó kedvezmény, megjelenítéshez. (százalékban)
 
 public:
-    DiakJegy(uint ksz = 0, uint hsz = 0, uint kedvezmeny = 0)
-        : Jegy(ksz, hsz), kedvezmeny(kedvezmeny) { }
+    DiakJegy(Vonat* j = NULL, uint ksz = 0, uint hsz = 0, uint kedvezmeny = 0)
+        : Jegy(j, ksz, hsz), kedvezmeny(kedvezmeny) { }
 
     /// kedvezmeny getter metódusa
     /// @return kedvezmeny

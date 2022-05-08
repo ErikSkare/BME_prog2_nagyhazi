@@ -11,6 +11,7 @@ using uint = unsigned int;
 
 #include <iostream>
 #include <exception>
+#include <fstream>
 #include "heterostore.hpp"
 #include "heterostore.cpp"
 #include "jegy.hpp"
@@ -95,13 +96,21 @@ public:
     inline void setErkIdo(Datum val) { erkIdo = val; }
 
     /// hozzáad egy jegyet a vonathoz, hogy késõbb érvényesíteni lehessen
-    /// @param jegy - a hozzáadandó jegy
+    /// @param jegy - a hozzáadandó jegyre mutató pointer
     /// ha már foglalt a hely, akkor kivétel keletkezik, és felszabadítódik a jegy!
     void jegyHozzaad(Jegy* jegy);
+
+    /// kitörli a megadott jegyet a vonat jegyei közül, ha az megtalálható
+    /// @param jegy - a törlendõ jegyre mutató pointer
+    void jegyTorol(Jegy* jegy);
 
     /// beolvassa a vonathoz tartozó jegyeket egy streamról.
     /// @param is - a stream, ahonnan a beolvasás történik.
     void jegyekBeolvas(std::istream& is);
+
+    /// kiírja a vonathoz tartozó jegyeket egy streamre.
+    /// @param os - a stream, ahova a kiírás történik.
+    void jegyekKiir(std::ostream& os) const;
 
     /// megkeres egy a vonathoz tartozó jegyet
     /// @param ksz - kocsiszám
@@ -138,22 +147,26 @@ std::istream& operator>>(std::istream& is, HeteroStore<Vonat>& vonatok);
 std::ostream& operator<<(std::ostream& os, const HeteroStore<Vonat>& vonatok);
 
 /// Predikátumok kezdete
-struct jegyKeresByMasikJegy {
-    Jegy* alapjan;
+struct jegyekBeolvasFajlbol {
+    string fajlNev;
 
-    jegyKeresByMasikJegy(Jegy* alapjan)
-        : alapjan(alapjan) { }
+    jegyekBeolvasFajlbol(string fajlNev)
+        : fajlNev(fajlNev) { }
 
-    bool operator()(Jegy* masik) { return *masik == *alapjan; }
+    void operator()(Vonat* vonat) {
+        std::ifstream fs(fajlNev);
+        vonat->jegyekBeolvas(fs);
+        fs.close();
+    }
 };
 
-struct jegyKeresByPozicio {
-    uint kocsiSzam, helySzam;
+struct vonatKeresByAzon {
+    uint azon;
 
-    jegyKeresByPozicio(uint ksz, uint hsz)
-        : kocsiSzam(ksz), helySzam(hsz) { }
+    vonatKeresByAzon(uint azon)
+        : azon(azon) { }
 
-    bool operator()(Jegy* jegy) { return kocsiSzam == jegy->getKocsiSzam() && helySzam == jegy->getHelySzam(); }
+    bool operator()(Vonat* vonat) { return vonat->getAzonosito() == azon; }
 };
 
 struct vonatKiir {

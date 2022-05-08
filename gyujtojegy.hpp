@@ -14,8 +14,8 @@ class GyujtoJegy : public Jegy {
     uint darab; ///> ahányszor még felhasználható a jegy.
 
 public:
-    GyujtoJegy(uint ksz = 0, uint hsz = 0, uint darab = 0)
-        : Jegy(ksz, hsz), darab(darab) { }
+    GyujtoJegy(Vonat* j = NULL, uint ksz = 0, uint hsz = 0, uint darab = 0)
+        : Jegy(j, ksz, hsz), darab(darab) { }
 
     /// darab getter metódusa
     /// @return darab

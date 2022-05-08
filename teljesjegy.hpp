@@ -12,8 +12,8 @@
 
 class TeljesJegy : public Jegy {
 public:
-    TeljesJegy(uint ksz = 0, uint hsz = 0)
-        : Jegy(ksz, hsz) { }
+    TeljesJegy(Vonat* j = NULL, uint ksz = 0, uint hsz = 0)
+        : Jegy(j, ksz, hsz) { }
 
     void kiir(std::ostream& os) const;
 

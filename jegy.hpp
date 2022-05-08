@@ -4,7 +4,7 @@
 /**
  * \file jegy.hpp
  *
- * Jegy absztrakt osztály, hozzátartozó hiba osztályok,
+ * Jegy absztrakt osztály, hozzátartozó hiba osztályok, predikátumok,
  * inline függvények deklarációja.
  */
 
@@ -14,6 +14,8 @@ using uint = unsigned int;
 #include <ostream>
 #include <istream>
 #include "utas.hpp"
+
+class Vonat;
 
 /// Enum a jegyek azonosításához a beolvasásnál.
 enum Jegyek {
@@ -44,6 +46,7 @@ public:
 };
 
 class Jegy {
+    Vonat* jarat;
     uint kocsiSzam; ///< A vonat kocsijának száma, ahova a jegy szól.
     uint helySzam; ///< A kocsin belüli hely száma, ahova a jegy szól.
     bool hasznalhato; ///< Érvényesítésnél van szerepe. (kezdetben igaz)
@@ -52,10 +55,19 @@ public:
     /// Konstruktor
     /// @param ksz - kocsiszám
     /// @param hsz - helyszám
+    /// @param j - járat
     /// A default értékek érvénytelen jegynek számítanak, a beolvasáshoz kellenek,
     /// hogy legyen default konstruktor.
-    Jegy(uint ksz = 0, uint hsz = 0)
-        : kocsiSzam(ksz), helySzam(hsz), hasznalhato(true) { }
+    Jegy(Vonat* j = NULL, uint ksz = 0, uint hsz = 0)
+        : jarat(j), kocsiSzam(ksz), helySzam(hsz), hasznalhato(true) { }
+
+    /// jarat getter metódusa
+    /// @return jarat
+    inline Vonat* getJarat() const { return jarat; }
+
+    /// jarat setter metódusa
+    /// @param val - az új érték
+    inline void setJarat(Vonat* val) { jarat = val; }
 
     /// kocsiSzam getter metódusa
     /// @return kocsiSzam
@@ -116,5 +128,34 @@ std::istream& operator>>(std::istream& is, Jegy& jegy);
 /// @param jegy - a jegy, aminek az adatait kiírjuk.
 /// @return a stream.
 std::ostream& operator<<(std::ostream& os, const Jegy& jegy);
+
+/// Predikátumok kezdete
+struct jegyKeresByMasikJegy {
+    Jegy* alapjan;
+
+    jegyKeresByMasikJegy(Jegy* alapjan)
+        : alapjan(alapjan) { }
+
+    bool operator()(Jegy* masik) { return *masik == *alapjan; }
+};
+
+struct jegyKeresByPozicio {
+    uint kocsiSzam, helySzam;
+
+    jegyKeresByPozicio(uint ksz, uint hsz)
+        : kocsiSzam(ksz), helySzam(hsz) { }
+
+    bool operator()(Jegy* jegy) { return kocsiSzam == jegy->getKocsiSzam() && helySzam == jegy->getHelySzam(); }
+};
+
+struct jegyKiir {
+    std::ostream& os;
+
+    jegyKiir(std::ostream& os)
+        : os(os) { }
+
+    void operator()(Jegy* jegy) { jegy->kiir(os); os << "\n"; }
+};
+/// Predikátumok vége
 
 #endif
