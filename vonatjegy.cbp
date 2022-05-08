@@ -31,19 +31,26 @@
 		<Compiler>
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
+			<Add option="-DMEMTRACE" />
 		</Compiler>
+		<Unit filename="datum.cpp" />
 		<Unit filename="datum.hpp" />
 		<Unit filename="diakjegy.cpp" />
 		<Unit filename="diakjegy.hpp" />
 		<Unit filename="gyujtojegy.cpp" />
 		<Unit filename="gyujtojegy.hpp" />
+		<Unit filename="heterostore.cpp" />
 		<Unit filename="heterostore.hpp" />
 		<Unit filename="jegy.cpp" />
 		<Unit filename="jegy.hpp" />
 		<Unit filename="main.cpp" />
+		<Unit filename="memtrace.cpp" />
+		<Unit filename="memtrace.h" />
 		<Unit filename="teljesjegy.cpp" />
 		<Unit filename="teljesjegy.hpp" />
 		<Unit filename="utas.hpp" />
+		<Unit filename="vonat.cpp" />
+		<Unit filename="vonat.hpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />
