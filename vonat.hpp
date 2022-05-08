@@ -147,16 +147,16 @@ std::istream& operator>>(std::istream& is, HeteroStore<Vonat>& vonatok);
 std::ostream& operator<<(std::ostream& os, const HeteroStore<Vonat>& vonatok);
 
 /// Predikátumok kezdete
-struct jegyekBeolvasFajlbol {
-    string fajlNev;
+struct jegyekBeolvasStreamrol {
+    std::istream& is;
 
-    jegyekBeolvasFajlbol(string fajlNev)
-        : fajlNev(fajlNev) { }
+    jegyekBeolvasStreamrol(std::istream& is)
+        : is(is) { }
 
     void operator()(Vonat* vonat) {
-        std::ifstream fs(fajlNev);
-        vonat->jegyekBeolvas(fs);
-        fs.close();
+        is.clear();
+        is.seekg(0, std::ios::beg);
+        vonat->jegyekBeolvas(is);
     }
 };
 
