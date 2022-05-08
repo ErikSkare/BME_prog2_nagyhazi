@@ -46,14 +46,15 @@ class Vonat {
 
 public:
     /// Konstruktor
+    /// @param az - azonosító
     /// @param ia - indulási állomás
     /// @param ii - indulási idõ
     /// @param ea - érkezési állomás
     /// @param ei - érkezési idõ
     /// A default értékek érvénytelen vonatnak számítanak, a beolvasáshoz kellenek,
     /// hogy legyen default konstruktor.
-    Vonat(string ia = "", Datum ii = {0, 0, 0, 0, 0}, string ea = "", Datum ei = {0, 0, 0, 0, 0})
-        : indAllomas(ia), erkAllomas(ea), indIdo(ii), erkIdo(ei) { }
+    Vonat(uint az, string ia = "", Datum ii = {0, 0, 0, 0, 0}, string ea = "", Datum ei = {0, 0, 0, 0, 0})
+        : azonosito(az), indAllomas(ia), erkAllomas(ea), indIdo(ii), erkIdo(ei) { }
 
     /// azonosito getter metódusa
     /// @return azonosito
