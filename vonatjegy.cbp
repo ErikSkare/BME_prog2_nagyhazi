@@ -37,6 +37,7 @@
 		<Unit filename="datum.hpp" />
 		<Unit filename="diakjegy.cpp" />
 		<Unit filename="diakjegy.hpp" />
+		<Unit filename="gtest_lite.h" />
 		<Unit filename="gyujtojegy.cpp" />
 		<Unit filename="gyujtojegy.hpp" />
 		<Unit filename="heterostore.cpp" />
@@ -51,10 +52,6 @@
 		<Unit filename="utas.hpp" />
 		<Unit filename="vonat.cpp" />
 		<Unit filename="vonat.hpp" />
-		<Extensions>
-			<code_completion />
-			<envvars />
-			<debugger />
-		</Extensions>
+		<Extensions />
 	</Project>
 </CodeBlocks_project_file>

@@ -5,7 +5,7 @@ Keszitette: Peregi Tamas, BME IIT, 2011
 Kanari:     Szeberenyi Imre, 2013.,
 VS 2012:    Szeberényi Imre, 2015.,
 mem_dump:   2016.
-inclue-ok:  2017., 2018. 2019.
+inclue-ok:  2017., 2018., 2019., 2021.
 *********************************/
 
 #ifndef MEMTRACE_H
@@ -101,7 +101,8 @@ END_NAMESPACE
 
 #if defined(MEMTRACE_TO_MEMORY)
 START_NAMESPACE
-        int mem_check(void);
+    int mem_check(void);
+    int poi_check(void*);
 END_NAMESPACE
 #endif
 
@@ -153,6 +154,17 @@ END_NAMESPACE
 	#include <map>
 	#include <algorithm>
 	#include <functional>
+	#include <memory>
+	#include <iomanip>
+	#include <locale>
+	#include <typeinfo>
+	#include <ostream>
+	#include <stdexcept>
+	#include <ctime>
+    #if __cplusplus >= 201103L
+        #include <iterator>
+        #include <regex>
+    #endif
 #endif
 #ifdef MEMTRACE_CPP
 	namespace std {
@@ -178,8 +190,7 @@ START_NAMESPACE
 	#define realloc(old,size) TRACEC(traced_realloc)(old,size,#size,__LINE__,__FILE__)
 	void * traced_realloc(void * old, size_t size, const char *size_txt, int line, const char * file);
 
-	void mem_dump(void const *mem, size_t size, FILE* fp);
-
+	void mem_dump(void const *mem, size_t size, FILE* fp = stdout);
 
 END_NAMESPACE
 #endif/*MEMTRACE_C*/
@@ -200,6 +211,12 @@ void * operator new[](size_t size) THROW_BADALLOC;
 void operator delete(void * p)  THROW_NOTHING;
 void operator delete[](void * p) THROW_NOTHING;
 
+#if __cplusplus >= 201402L
+// sized delete miatt: http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3536.html
+void operator delete(void * p, size_t)  THROW_NOTHING;
+void operator delete[](void * p, size_t) THROW_NOTHING;
+#endif
+
 /* Visual C++ 2012 miatt kell, mert háklis, hogy nincs megfelelő delete, bár senki sem használja */
 void operator delete(void *p, int, const char *) THROW_NOTHING;
 void operator delete[](void *p, int, const char *) THROW_NOTHING;
@@ -215,5 +232,8 @@ void operator delete[](void *p, int, const char *) THROW_NOTHING;
 #endif /*MEMTRACE_CPP*/
 
 #endif /*FROM_MEMTRACE_CPP*/
-#endif /*MEMCHECK*/
+#else
+#pragma message ( "MEMTRACE NOT DEFINED" )
+#endif /*MEMTRACE*/
+
 #endif /*MEMTRACE_H*/
