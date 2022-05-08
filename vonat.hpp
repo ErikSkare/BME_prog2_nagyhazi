@@ -53,7 +53,7 @@ public:
     /// @param ei - érkezési idõ
     /// A default értékek érvénytelen vonatnak számítanak, a beolvasáshoz kellenek,
     /// hogy legyen default konstruktor.
-    Vonat(uint az, string ia = "", Datum ii = {0, 0, 0, 0, 0}, string ea = "", Datum ei = {0, 0, 0, 0, 0})
+    Vonat(uint az = 0, string ia = "", Datum ii = {0, 0, 0, 0, 0}, string ea = "", Datum ei = {0, 0, 0, 0, 0})
         : azonosito(az), indAllomas(ia), erkAllomas(ea), indIdo(ii), erkIdo(ei) { }
 
     /// azonosito getter metódusa
