@@ -1,5 +1,7 @@
 #include <iostream>
 #include <fstream>
+#include "memtrace.h"
+#include "gyujtojegy.hpp"
 #include "vonat.hpp"
 
 using namespace std;
@@ -13,9 +15,12 @@ int main()
 
     vonatok.bejar(jegyekBeolvasFajlbol("jegyek.txt"));
 
-    vonatok.keres(vonatKeresByAzon(0))->jegyTorol(vonatok.keres(vonatKeresByAzon(0))->jegyKeres(5, 4));
-    Jegy* jegy = vonatok.keres(vonatKeresByAzon(0))->jegyKeres(5, 4);
-    if(jegy == NULL)
-        cout<<"1";
+    Vonat* vonat = vonatok.keres(vonatKeresByAzon(0));
+    try {
+        vonat->jegyHozzaad(new GyujtoJegy(vonat, 5, 5, 2));
+    } catch(FoglaltHiba&) {
+        std::cout << "hello";
+    }
+    vonat->jegyekKiir(cout);
     return 0;
 }

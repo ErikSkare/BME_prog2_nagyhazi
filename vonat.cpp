@@ -10,11 +10,15 @@
 #include "gyujtojegy.hpp"
 
 void Vonat::jegyHozzaad(Jegy* jegy) {
-    if(jegy->getJarat() != this)
+    if(jegy->getJarat() != this) {
+        delete jegy;
         throw RosszVonatHiba();
+    }
     Jegy* talalat = jegyek.keres(jegyKeresByMasikJegy(jegy));
-    if(talalat != NULL)
+    if(talalat != NULL) {
+        delete jegy;
         throw FoglaltHiba(talalat->getKocsiSzam(), talalat->getHelySzam());
+    }
     jegyek.hozzaad(jegy);
 }
 
