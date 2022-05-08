@@ -160,6 +160,15 @@ struct jegyekBeolvasStreamrol {
     }
 };
 
+struct jegyekKiirStreamre {
+    std::ostream& os;
+
+    jegyekKiirStreamre(std::ostream& os)
+        : os(os) { }
+
+    void operator()(Vonat* vonat) { vonat->jegyekKiir(os); }
+};
+
 struct vonatKeresByAzon {
     uint azon;
 
