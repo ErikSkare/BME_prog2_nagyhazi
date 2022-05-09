@@ -130,9 +130,9 @@ MenuAllapot Menu::jegy_kiadas_vezerlo() {
         talalat->jegyHozzaad(ujJegy);
         cout << "Sikerült a hozzáadás!\n";
     } catch(FoglaltHiba& hiba) {
-        cout << hiba.what() << "\n";
+        cout << hiba.what();
     } catch(RosszVonatHiba& hiba) {
-        cout << hiba.what() << "\n";
+        cout << hiba.what();
     }
 
     return FOMENU;
@@ -172,7 +172,7 @@ MenuAllapot Menu::jegy_ervenyesites_vezerlo() {
             talalat->jegyTorol(ervenyesitendo);
         cout << "Sikerült az érvényesítés!\n";
     } catch(ErvenyesitesiHiba& hiba) {
-        cout << hiba.what() << "\n";
+        cout << hiba.what();
     }
 
     return FOMENU;
