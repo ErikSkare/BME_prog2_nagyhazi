@@ -7,7 +7,7 @@
 #include "teljesjegy.hpp"
 
 void TeljesJegy::exec(const Utas& utas) {
-    if(!utas.hasDiakIg())
+    if(!utas.hasSzemelyIg())
         throw ErvenyesitesiHiba(false, true, false);
     setHasznalhato(false);
 }

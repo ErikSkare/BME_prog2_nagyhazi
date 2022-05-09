@@ -1,12 +1,13 @@
 #include <iostream>
 #include <fstream>
 #include "memtrace.h"
-#include "vonat.hpp"
+#include "menu.hpp"
 
 using namespace std;
 
 int main()
 {
+    setlocale(LC_ALL, "hun");
     // beolvasás
     HeteroStore<Vonat> vonatok;
     ifstream be1("vonatok.txt");
@@ -19,6 +20,9 @@ int main()
         vonatok.bejar(jegyekBeolvasStreamrol(be2));
         be2.close();
     }
+
+    Menu menu(vonatok);
+    menu.megjelenit();
 
     // kiírás
     ofstream ki1("vonatok.txt");
