@@ -7,14 +7,15 @@
 #include "jegy.hpp"
 #include "vonat.hpp"
 
-void ErvenyesitesiHiba::what(std::ostream& os) {
-    os << "Sikertelen ervenyesites: \n";
-    if(nemHasznalhato)
-        os << "  - A jegy mar nem hasznalhato!\n";
-    if(nincsSzemelyi)
-        os << "  - Az utasnal nincs szemelyi!\n";
-    if(nincsDiak)
-        os << "  - Az utasnal nincs diak!\n";
+ErvenyesitesiHiba::ErvenyesitesiHiba(bool nh, bool nsz, bool nd) {
+    uzenet = std::string("Sikertelen ervenyesites: \n");
+    if(nh) uzenet += std::string("  - A jegy mar nem hasznalhato!\n");
+    if(nsz) uzenet += std::string("  - Az utasnal nincs szemelyi!\n");
+    if(nd) uzenet += std::string("  - Az utasnal nincs diak!\n");
+}
+
+const char* ErvenyesitesiHiba::what() const throw() {
+    return uzenet.c_str();
 }
 
 void Jegy::ervenyesit(const Utas& utas) {

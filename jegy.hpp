@@ -25,21 +25,16 @@ enum Jegyek {
 };
 
 class ErvenyesitesiHiba : std::exception {
-    bool nemHasznalhato; ///< Az utasnál lévõ jegy már nem használható.
-    bool nincsSzemelyi; ///< Nincs az utasnál személyigazolvány.
-    bool nincsDiak; ///< Nincs az utasnál diákigazolvány.
+    std::string uzenet;
 
 public:
     /// Konstruktor
-    /// @param nh - nemHasznalhato
-    /// @param nsz - nincsSzemelyi
-    /// @param nd - nincsDiak
-    ErvenyesitesiHiba(bool nh, bool nsz, bool nd)
-        : nemHasznalhato(nh), nincsSzemelyi(nsz), nincsDiak(nd) { }
+    /// @param nh - nem használható
+    /// @param nsz - nincs személyi
+    /// @param nd - nincs diák
+    ErvenyesitesiHiba(bool nh, bool nsz, bool nd);
 
-    /// a hibát kiíró metódus
-    /// @param os - a stream, amire a kiírás történik.
-    virtual void what(std::ostream& os);
+    virtual const char* what() const throw();
 
     /// virtuális destruktor
     virtual ~ErvenyesitesiHiba() { }

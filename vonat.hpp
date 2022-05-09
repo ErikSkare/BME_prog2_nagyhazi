@@ -20,20 +20,23 @@ using uint = unsigned int;
 using std::string;
 
 class FoglaltHiba : std::exception {
-    uint kocsiSzam, helySzam;
+    string uzenet;
 
 public:
-    FoglaltHiba(uint ksz, uint hsz)
-        : kocsiSzam(ksz), helySzam(hsz) { }
+    FoglaltHiba(uint ksz, uint hsz);
 
-    virtual void what(std::ostream& os) { os << "A(z) " << kocsiSzam << ". kocsi " << helySzam << ". helye mar foglalt!\n"; }
+    virtual const char* what() const throw();
 
     virtual ~FoglaltHiba() { }
 };
 
 class RosszVonatHiba : std::exception {
+    string uzenet;
+
 public:
-    virtual void what(std::ostream& os) { os << "Ehhez a vonathoz nem lehet hozzaadni a jegyet!\n"; }
+    RosszVonatHiba();
+
+    virtual const char* what() const throw();
 
     virtual ~RosszVonatHiba() { }
 };

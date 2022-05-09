@@ -4,10 +4,29 @@
  * A vonat.hpp-hez tartozó definíciók.
  */
 
+#include <sstream>
 #include "vonat.hpp"
 #include "teljesjegy.hpp"
 #include "diakjegy.hpp"
 #include "gyujtojegy.hpp"
+
+FoglaltHiba::FoglaltHiba(uint ksz, uint hsz) {
+    std::stringstream ss;
+    ss << "A(z) " << ksz << ". kocsi " << hsz << ". helye mar foglalt!\n";
+    uzenet = ss.str();
+}
+
+const char* FoglaltHiba::what() const throw() {
+    return uzenet.c_str();
+}
+
+RosszVonatHiba::RosszVonatHiba() {
+    uzenet = std::string("Ehhez a vonathoz nem lehet hozzaadni jegyet!\n");
+}
+
+const char* RosszVonatHiba::what() const throw() {
+    return uzenet.c_str();
+}
 
 void Vonat::jegyHozzaad(Jegy* jegy) {
     if(jegy->getJarat() != this) {
