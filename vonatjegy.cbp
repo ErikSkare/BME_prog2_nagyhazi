@@ -47,6 +47,8 @@
 		<Unit filename="main.cpp" />
 		<Unit filename="memtrace.cpp" />
 		<Unit filename="memtrace.h" />
+		<Unit filename="menu.cpp" />
+		<Unit filename="menu.hpp" />
 		<Unit filename="teljesjegy.cpp" />
 		<Unit filename="teljesjegy.hpp" />
 		<Unit filename="utas.hpp" />

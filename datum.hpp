@@ -62,6 +62,8 @@ public:
     /// @param val - az új érték
     inline void setPerc(uint val) { perc = val; }
 
+    bool operator==(const Datum& masik) const;
+
     /// virtuális destruktor
     virtual ~Datum() { }
 };

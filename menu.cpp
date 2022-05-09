@@ -26,11 +26,8 @@ void Menu::megjelenit() {
             case JEGY_KIADAS:
                 allapot = jegy_kiadas_vezerlo();
                 break;
-            case JEGY_ERVENYESITES:
-                allapot = jegy_ervenyesites_vezerlo();
-                break;
             default:
-                allapot = FOMENU;
+                allapot = jegy_ervenyesites_vezerlo();
                 break;
         }
         std::cout << "\n-----------------------------------\n\n";
@@ -130,8 +127,6 @@ MenuAllapot Menu::jegy_kiadas_vezerlo() {
         talalat->jegyHozzaad(ujJegy);
         cout << "Sikerült a hozzáadás!\n";
     } catch(FoglaltHiba& hiba) {
-        cout << hiba.what();
-    } catch(RosszVonatHiba& hiba) {
         cout << hiba.what();
     }
 

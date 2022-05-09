@@ -6,6 +6,10 @@
 
 #include "datum.hpp"
 
+bool Datum::operator==(const Datum& masik) const {
+    return ev == masik.ev && honap == masik.honap && nap == masik.nap && ora == masik.ora && perc == masik.perc;
+}
+
 std::istream& operator>>(std::istream& is, Datum& datum) {
     uint ev, honap, nap, ora, perc;
     is >> ev >> honap >> nap >> ora >> perc;

@@ -62,12 +62,11 @@ void Vonat::jegyekBeolvas(std::istream& is) {
                 is >> *d_jegy;
                 jegy = d_jegy;
             } break;
-            case GYUJTOJEGY: {
+            default: {
                 GyujtoJegy* gy_jegy = new GyujtoJegy();
                 is >> *gy_jegy;
                 jegy = gy_jegy;
             } break;
-            default: break;
         }
         if(vonat_azon != azonosito)
             delete jegy;
