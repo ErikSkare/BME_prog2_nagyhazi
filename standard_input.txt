@@ -3,15 +3,25 @@
 1
 2 Debrecen 2022 6 8 16 4 Szeged 2022 6 8 18 30
 2
-1 2 5 4
+1 2 5 4 //sikeres
 2
-1 2 5 4
+1 2 5 4 //foglalt hely
 2
-2 2 5 5 20
+2 2 5 5 20 //sikeres
 2
-3 2 5 6 2
+3 2 5 6 2 //sikeres
+2
+5 2 5 4 //rossz tipus
+2
+1 7 5 4 //nincs ilyen vonat
 3
-2 5 4 0 1
+2 5 4 0 1 //ervenyesitesi hiba
 3
-2 5 4 1 0
+2 5 4 1 0 //sikeres
+3
+6 5 4 1 0 //nincs ilyen vonat
+3
+2 6 6 1 0 //nem található a jegy
+6
+7
 4
