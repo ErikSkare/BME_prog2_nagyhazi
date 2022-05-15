@@ -2,7 +2,7 @@
 #define VONAT_H
 
 /**
- * \file datum.hpp
+ * \file datum.h
  *
  * Vonat osztály, hozzá tartozó hibaosztályok, predikátumok deklarációja
  */

@@ -1,8 +1,8 @@
-#ifndef TELJESJEGY_HPP
-#define TELJESJEGY_HPP
+#ifndef TELJESJEGY_H
+#define TELJESJEGY_H
 
 /**
- * \file teljesjegy.hpp
+ * \file teljesjegy.h
  *
  * TeljesJegy osztály és a hozzá tartozó
  * inline függvények deklarációja.

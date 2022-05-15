@@ -1,8 +1,8 @@
-#ifndef UTAS_HPP
-#define UTAS_HPP
+#ifndef UTAS_H
+#define UTAS_H
 
 /**
- * \file utas.hpp
+ * \file utas.h
  *
  * Utas osztály deklarációja
  */

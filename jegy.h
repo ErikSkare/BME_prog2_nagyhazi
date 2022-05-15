@@ -1,8 +1,8 @@
-#ifndef JEGY_HPP
-#define JEGY_HPP
+#ifndef JEGY_H
+#define JEGY_H
 
 /**
- * \file jegy.hpp
+ * \file jegy.h
  *
  * Jegy absztrakt osztály, hozzátartozó hiba osztályok, predikátumok,
  * inline függvények deklarációja.

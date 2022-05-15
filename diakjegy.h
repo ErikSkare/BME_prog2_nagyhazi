@@ -1,8 +1,8 @@
-#ifndef DIAKJEGY_HPP
-#define DIAKJEGY_HPP
+#ifndef DIAKJEGY_H
+#define DIAKJEGY_H
 
 /**
- * \file diakjegy.hpp
+ * \file diakjegy.h
  *
  * DiakJegy osztály és a hozzá tartozó
  * inline függvények deklarációja.

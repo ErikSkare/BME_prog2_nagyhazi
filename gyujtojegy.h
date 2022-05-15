@@ -1,8 +1,8 @@
-#ifndef GYUJTOJEGY_HPP
-#define GYUJTOJEGY_HPP
+#ifndef GYUJTOJEGY_H
+#define GYUJTOJEGY_H
 
 /**
- * \file gyujtojegy.hpp
+ * \file gyujtojegy.h
  *
  * GyujtoJegy osztály és a hozzá tartozó
  * inline függvények deklarációja.

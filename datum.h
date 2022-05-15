@@ -1,8 +1,8 @@
-#ifndef DATUM_HPP
-#define DATUM_HPP
+#ifndef DATUM_H
+#define DATUM_H
 
 /**
- * \file datum.hpp
+ * \file datum.h
  *
  * Datum osztály deklarációja
  */

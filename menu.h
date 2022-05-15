@@ -1,8 +1,8 @@
-#ifndef MENU_HPP
-#define MENU_HPP
+#ifndef MENU_H
+#define MENU_H
 
 /**
- * \file menu.hpp
+ * \file menu.h
  *
  * Menürendszer megvalósítása!
  */
