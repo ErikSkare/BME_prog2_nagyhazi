@@ -4,8 +4,8 @@
  * A jegy.hpp-hez tartozó definíciók.
  */
 
-#include "jegy.hpp"
-#include "vonat.hpp"
+#include "jegy.h"
+#include "vonat.h"
 
 ErvenyesitesiHiba::ErvenyesitesiHiba(bool nh, bool nsz, bool nd) {
     uzenet = std::string("Sikertelen ervenyesites: \n");

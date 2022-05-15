@@ -3,10 +3,10 @@
 #include <sstream>
 #include "memtrace.h"
 #include "gtest_lite.h"
-#include "menu.hpp"
-#include "teljesjegy.hpp"
-#include "diakjegy.hpp"
-#include "gyujtojegy.hpp"
+#include "menu.h"
+#include "teljesjegy.h"
+#include "diakjegy.h"
+#include "gyujtojegy.h"
 
 using namespace std;
 

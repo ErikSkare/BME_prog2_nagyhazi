@@ -4,7 +4,7 @@
  * A teljesjegy.hpp-hez tartozó definíciók.
  */
 
-#include "teljesjegy.hpp"
+#include "teljesjegy.h"
 
 void TeljesJegy::exec(const Utas& utas) {
     if(!utas.hasSzemelyIg())

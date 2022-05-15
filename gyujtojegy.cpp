@@ -4,7 +4,7 @@
  * A gyujtojegy.hpp-hez tartozó definíciók.
  */
 
-#include "gyujtojegy.hpp"
+#include "gyujtojegy.h"
 
 void GyujtoJegy::exec(const Utas& utas) {
     if(!utas.hasSzemelyIg())

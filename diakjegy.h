@@ -8,7 +8,7 @@
  * inline függvények deklarációja.
  */
 
-#include "jegy.hpp"
+#include "jegy.h"
 
 class DiakJegy : public Jegy {
     uint kedvezmeny; ///< A jegyhez tartozó kedvezmény, megjelenítéshez. (százalékban)

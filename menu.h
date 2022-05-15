@@ -7,7 +7,7 @@
  * Menürendszer megvalósítása!
  */
 
-#include "vonat.hpp"
+#include "vonat.h"
 
 /// A menü állapota
 enum MenuAllapot {

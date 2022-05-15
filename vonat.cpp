@@ -5,10 +5,10 @@
  */
 
 #include <sstream>
-#include "vonat.hpp"
-#include "teljesjegy.hpp"
-#include "diakjegy.hpp"
-#include "gyujtojegy.hpp"
+#include "vonat.h"
+#include "teljesjegy.h"
+#include "diakjegy.h"
+#include "gyujtojegy.h"
 
 FoglaltHiba::FoglaltHiba(uint ksz, uint hsz) {
     std::stringstream ss;

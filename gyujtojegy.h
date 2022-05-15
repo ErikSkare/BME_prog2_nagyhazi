@@ -8,7 +8,7 @@
  * inline függvények deklarációja.
  */
 
-#include "jegy.hpp"
+#include "jegy.h"
 
 class GyujtoJegy : public Jegy {
     uint darab; ///> ahányszor még felhasználható a jegy.

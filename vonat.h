@@ -1,5 +1,5 @@
-#ifndef VONAT_HPP
-#define VONAT_HPP
+#ifndef VONAT_H
+#define VONAT_H
 
 /**
  * \file datum.hpp
@@ -14,8 +14,8 @@ using uint = unsigned int;
 #include <fstream>
 #include "heterostore.hpp"
 #include "heterostore.cpp"
-#include "jegy.hpp"
-#include "datum.hpp"
+#include "jegy.h"
+#include "datum.h"
 
 using std::string;
 

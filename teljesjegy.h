@@ -8,7 +8,7 @@
  * inline függvények deklarációja.
  */
 
-#include "jegy.hpp"
+#include "jegy.h"
 
 class TeljesJegy : public Jegy {
 public:

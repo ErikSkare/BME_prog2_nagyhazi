@@ -4,7 +4,7 @@
  * A datum.hpp-hez tartozó definíciók.
  */
 
-#include "datum.hpp"
+#include "datum.h"
 
 bool Datum::operator==(const Datum& masik) const {
     return ev == masik.ev && honap == masik.honap && nap == masik.nap && ora == masik.ora && perc == masik.perc;

@@ -4,7 +4,7 @@
  * A diakjegy.hpp-hez tartozó definíciók.
  */
 
-#include "diakjegy.hpp"
+#include "diakjegy.h"
 
 void DiakJegy::exec(const Utas& utas) {
     if(!utas.hasSzemelyIg() || !utas.hasDiakIg())
